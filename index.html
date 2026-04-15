@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Build your personalized training & nutrition plan — by Sean Nygren PT, Stockholm." />
+  <title>Sean Nygren PT — Build Your Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner container">
+      <button class="nav__logo" data-view="home">SEAN <span>PT</span></button>
+      <ul class="nav__links" id="navLinks">
+        <li><button class="nav__link" data-view="home">Home</button></li>
+        <li><button class="nav__link" data-view="quiz">Build My Plan</button></li>
+        <li><button class="nav__link" data-view="library">Workouts</button></li>
+        <li><a href="mailto:sean@seannygrenpt.com" class="nav__link">Book a Call</a></li>
+        <li><button class="btn btn--sm btn--primary" data-view="quiz">Get Started</button></li>
+      </ul>
+      <button class="nav__burger" id="burger" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ================================================
+       VIEW: HOME
+  ================================================ -->
+  <div id="view-home" class="view view--active">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__orb"></div>
+      <div class="container hero__inner">
+
+        <!-- Left: copy -->
+        <div class="hero__content">
+          <div class="hero__badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Licensed PT · Stockholm
+          </div>
+          <h1 class="hero__headline">
+            Your body.<br/>Your goals.<br/><em>Your plan.</em>
+          </h1>
+          <p class="hero__sub">
+            Answer 5 questions — get a custom workout split, exact calorie targets, macro breakdown, and cardio plan. Science-based. Free.
+          </p>
+          <div class="hero__ctas">
+            <button class="btn btn--primary btn--lg" data-view="quiz">Build My Free Plan →</button>
+            <button class="btn btn--ghost btn--lg" data-view="library">Browse Workouts</button>
+          </div>
+          <div class="hero__trust">
+            <span>No signup required</span>
+            <span aria-hidden="true">·</span>
+            <span>Mifflin-St Jeor formula</span>
+            <span aria-hidden="true">·</span>
+            <span>Takes 2 minutes</span>
+          </div>
+        </div>
+
+        <!-- Right: editorial plan preview (no cards — editorial type) -->
+        <div class="hero__editorial" aria-hidden="true">
+          <div class="editorial__label">Example output — Hypertrophy · Intermediate</div>
+          <div class="editorial__plan">
+            <div class="editorial__day">
+              <span class="editorial__day-marker">MON</span>
+              <span class="editorial__day-name">Chest &amp; Triceps</span>
+              <span class="editorial__day-dot active"></span>
+            </div>
+            <div class="editorial__day">
+              <span class="editorial__day-marker">TUE</span>
+              <span class="editorial__day-name">Back &amp; Biceps</span>
+              <span class="editorial__day-dot active"></span>
+            </div>
+            <div class="editorial__day editorial__day--rest">
+              <span class="editorial__day-marker">WED</span>
+              <span class="editorial__day-name">Rest</span>
+              <span class="editorial__day-dot"></span>
+            </div>
+            <div class="editorial__day">
+              <span class="editorial__day-marker">THU</span>
+              <span class="editorial__day-name">Legs</span>
+              <span class="editorial__day-dot active"></span>
+            </div>
+            <div class="editorial__day">
+              <span class="editorial__day-marker">FRI</span>
+              <span class="editorial__day-name">Shoulders &amp; Arms</span>
+              <span class="editorial__day-dot active"></span>
+            </div>
+            <div class="editorial__day editorial__day--rest">
+              <span class="editorial__day-marker">SAT</span>
+              <span class="editorial__day-name">Rest / Cardio</span>
+              <span class="editorial__day-dot"></span>
+            </div>
+          </div>
+          <div class="editorial__stats">
+            <div class="editorial__stat">
+              <div class="editorial__stat-num accent">3,124</div>
+              <div class="editorial__stat-label">kcal / day</div>
+            </div>
+            <div class="editorial__divider"></div>
+            <div class="editorial__stat">
+              <div class="editorial__stat-num">164g</div>
+              <div class="editorial__stat-label">protein</div>
+            </div>
+            <div class="editorial__divider"></div>
+            <div class="editorial__stat">
+              <div class="editorial__stat-num">451g</div>
+              <div class="editorial__stat-label">carbs</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Feature strip -->
+    <div class="feature-strip">
+      <div class="container feature-strip__inner">
+        <div class="feature-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Goal-Based Plans
+        </div>
+        <div class="feature-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          Macro Calculator
+        </div>
+        <div class="feature-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Custom Split
+        </div>
+        <div class="feature-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Cardio Programming
+        </div>
+        <div class="feature-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          TDEE Calculator
+        </div>
+        <div class="feature-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          32 Exercises
+        </div>
+      </div>
+    </div>
+
+    <!-- How it works — editorial list, not identical card grid -->
+    <section class="how section">
+      <div class="container how__inner">
+        <div class="how__left">
+          <p class="section__eyebrow">How It Works</p>
+          <h2 class="section__heading">A plan built<br/>around you<br/>in 5 steps.</h2>
+          <p class="how__sub">No generic templates. Every variable — your goal, your stats, your schedule — shapes the output.</p>
+          <button class="btn btn--primary" data-view="quiz" style="margin-top:32px">Build My Plan →</button>
+        </div>
+        <div class="how__right">
+          <div class="how-step">
+            <div class="how-step__num">01</div>
+            <div class="how-step__body">
+              <h3>Choose Your Goal</h3>
+              <p>Strength, muscle building, cardio, or general health. Everything downstream changes based on this choice.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">02</div>
+            <div class="how-step__body">
+              <h3>Enter Your Stats</h3>
+              <p>Height, weight, age, activity level. We use the Mifflin-St Jeor formula for precise calorie calculation.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">03</div>
+            <div class="how-step__body">
+              <h3>Select Experience Level</h3>
+              <p>Beginner, intermediate, or advanced determines your split, volume, and exercise selection.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">04</div>
+            <div class="how-step__body">
+              <h3>Choose Equipment</h3>
+              <p>Your exercises are filtered to what you actually have. No exercises requiring gear you don't own.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">05</div>
+            <div class="how-step__body">
+              <h3>Get Your Plan</h3>
+              <p>Custom weekly split, exact macros, and cardio recommendations — ready to start today.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Goal selector -->
+    <section class="goals section">
+      <div class="container">
+        <div class="section__header">
+          <p class="section__eyebrow">Pick Your Path</p>
+          <h2 class="section__heading">What are you training for?</h2>
+        </div>
+        <div class="goal-preview-grid">
+          <div class="goal-preview-card" data-view="quiz">
+            <div class="goal-preview-card__top">
+              <svg class="goal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M18 4v16M3 8h4m10 0h4M3 16h4m10 0h4M7 8h10v8H7z"/></svg>
+              <h3>Strength</h3>
+            </div>
+            <p>Compound-first programming. Progressive overload. Get stronger every week on the big lifts.</p>
+            <div class="goal-tags"><span>3–5 reps</span><span>Heavy loads</span><span>PPL / Upper-Lower</span></div>
+          </div>
+          <div class="goal-preview-card goal-preview-card--featured" data-view="quiz">
+            <div class="goal-preview-card__top">
+              <svg class="goal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <h3>Build Muscle</h3>
+            </div>
+            <p>High volume, controlled tempo, strategic isolation. Maximum hypertrophy stimulus per session.</p>
+            <div class="goal-tags"><span>8–15 reps</span><span>High volume</span><span>Body part split</span></div>
+          </div>
+          <div class="goal-preview-card" data-view="quiz">
+            <div class="goal-preview-card__top">
+              <svg class="goal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <h3>Cardio &amp; Endurance</h3>
+            </div>
+            <p>Zone 2 base building, HIIT intervals, and structured endurance programming for real fitness gains.</p>
+            <div class="goal-tags"><span>Zone 2</span><span>HIIT</span><span>Intervals</span></div>
+          </div>
+          <div class="goal-preview-card" data-view="quiz">
+            <div class="goal-preview-card__top">
+              <svg class="goal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              <h3>General Health</h3>
+            </div>
+            <p>Balanced training for longevity. Strength + cardio + mobility combined into one sustainable plan.</p>
+            <div class="goal-tags"><span>Balanced</span><span>Sustainable</span><span>Full body</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Sean -->
+    <section class="about-brief section" id="book-section">
+      <div class="container about-brief__inner">
+        <div class="about-brief__content">
+          <p class="section__eyebrow">Work With Sean</p>
+          <h2 class="section__heading">Want a coach<br/>behind the plan?</h2>
+          <p class="about-brief__text">The plan builder gives you the framework. I give you the refinement — weekly adjustments, form reviews, accountability, and direct access via WhatsApp. Based in Stockholm, coaching online worldwide.</p>
+          <div class="about-brief__creds">
+            <div class="cred-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Licensed Personal Trainer — 2026
+            </div>
+            <div class="cred-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Science-based programming, no fads
+            </div>
+            <div class="cred-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              1-on-1 sessions &amp; online coaching
+            </div>
+          </div>
+          <a href="mailto:sean@seannygrenpt.com" class="btn btn--primary btn--lg">Book a Free 15-Min Call →</a>
+        </div>
+        <div class="about-brief__image">
+          <div class="image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <p>Add Sean's photo</p>
+          </div>
+          <div class="about-brief__badge">
+            <strong>Sean Nygren</strong><span>Licensed PT · Stockholm</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <button class="footer__logo" data-view="home">SEAN NYGREN <span>PT</span></button>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <button data-view="home">Home</button>
+          <button data-view="quiz">Build My Plan</button>
+          <button data-view="library">Workouts</button>
+          <a href="mailto:sean@seannygrenpt.com">Contact</a>
+        </nav>
+        <div class="footer__socials">
+          <a href="https://instagram.com/seannygrenpt" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="https://tiktok.com/@seannygrenpt" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.86a8.19 8.19 0 004.79 1.53V6.93a4.85 4.85 0 01-1.02-.24z"/></svg>
+          </a>
+        </div>
+        <p class="footer__copy">© 2026 Sean Nygren Personal Training · Stockholm</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ================================================
+       VIEW: QUIZ
+  ================================================ -->
+  <div id="view-quiz" class="view">
+    <div class="quiz-wrap">
+      <div class="quiz-topbar">
+        <button class="quiz-topbar__back" id="quizBack" aria-label="Go back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Back
+        </button>
+        <div class="quiz-topbar__progress">
+          <div class="quiz-prog-track" role="progressbar" aria-label="Quiz progress">
+            <div class="quiz-prog-fill" id="progFill"></div>
+          </div>
+          <span class="quiz-topbar__label" id="stepLabel">Step 1 of 5</span>
+        </div>
+        <button class="quiz-topbar__close" data-view="home" aria-label="Close quiz">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="quiz-steps-viewport">
+
+        <!-- STEP 1: Goal -->
+        <div class="quiz-step" id="step-1">
+          <div class="quiz-step__hd">
+            <h2>What's your main goal?</h2>
+            <p>We build your entire plan around this single choice.</p>
+          </div>
+          <div class="goal-grid">
+            <div class="goal-card" data-field="goal" data-value="strength" role="button" tabindex="0">
+              <div class="goal-card__check" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <svg class="goal-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M18 4v16M3 8h4m10 0h4M3 16h4m10 0h4M7 8h10v8H7z"/></svg>
+              <h3>Strength</h3>
+              <p>Get stronger. Lift heavier. Compound-first programming with progressive overload.</p>
+              <div class="goal-card__tags"><span>3–5 reps</span><span>Heavy loads</span><span>Linear progression</span></div>
+            </div>
+            <div class="goal-card" data-field="goal" data-value="hypertrophy" role="button" tabindex="0">
+              <div class="goal-card__check" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <svg class="goal-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <h3>Build Muscle</h3>
+              <p>Maximize muscle size. High volume, controlled tempo, strategic isolation work.</p>
+              <div class="goal-card__tags"><span>8–15 reps</span><span>High volume</span><span>Isolation</span></div>
+            </div>
+            <div class="goal-card" data-field="goal" data-value="cardio" role="button" tabindex="0">
+              <div class="goal-card__check" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <svg class="goal-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <h3>Cardio &amp; Endurance</h3>
+              <p>Better fitness, stamina, and cardiovascular health. Zone 2 base + HIIT intervals.</p>
+              <div class="goal-card__tags"><span>Zone 2</span><span>HIIT</span><span>Intervals</span></div>
+            </div>
+            <div class="goal-card" data-field="goal" data-value="health" role="button" tabindex="0">
+              <div class="goal-card__check" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <svg class="goal-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              <h3>General Health</h3>
+              <p>Look and feel better. Balanced strength + cardio for long-term wellbeing.</p>
+              <div class="goal-card__tags"><span>Balanced</span><span>Sustainable</span><span>Full body</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Body Stats -->
+        <div class="quiz-step quiz-step--hidden" id="step-2">
+          <div class="quiz-step__hd">
+            <h2>Tell us about your body</h2>
+            <p>Calculates your exact calorie needs using the Mifflin-St Jeor formula.</p>
+          </div>
+          <div class="stats-form">
+            <div class="form-group">
+              <label id="gender-label">Biological sex</label>
+              <div class="toggle-group" role="radiogroup" aria-labelledby="gender-label">
+                <button class="toggle-btn toggle-btn--active" data-field="gender" data-value="male" role="radio" aria-checked="true">Male</button>
+                <button class="toggle-btn" data-field="gender" data-value="female" role="radio" aria-checked="false">Female</button>
+              </div>
+            </div>
+            <div class="form-row-3">
+              <div class="form-group">
+                <label for="inp-age">Age</label>
+                <div class="input-wrap">
+                  <input type="number" id="inp-age" placeholder="25" min="15" max="80" autocomplete="off" />
+                  <span class="input-unit" aria-hidden="true">yrs</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inp-weight">Weight</label>
+                <div class="input-wrap">
+                  <input type="number" id="inp-weight" placeholder="80" min="40" max="200" autocomplete="off" />
+                  <span class="input-unit" aria-hidden="true">kg</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inp-height">Height</label>
+                <div class="input-wrap">
+                  <input type="number" id="inp-height" placeholder="180" min="140" max="220" autocomplete="off" />
+                  <span class="input-unit" aria-hidden="true">cm</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label id="activity-label">Activity level <small>(outside of gym training)</small></label>
+              <div class="activity-grid" role="radiogroup" aria-labelledby="activity-label">
+                <button class="activity-btn" data-field="activity" data-value="sedentary" role="radio" aria-checked="false">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 9V7a2 2 0 00-2-2h-1M4 9V7a2 2 0 012-2h1M8 7h8M7 21h10M5 13h14"/><circle cx="12" cy="17" r="1"/></svg>
+                  <div><strong>Sedentary</strong><small>Desk job, little movement</small></div>
+                </button>
+                <button class="activity-btn" data-field="activity" data-value="light" role="radio" aria-checked="false">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 4a1 1 0 11-2 0 1 1 0 012 0zM7 20l2-7m5 7l-2-7m-1-3l1-3M8 13h8"/></svg>
+                  <div><strong>Light</strong><small>Some walking daily</small></div>
+                </button>
+                <button class="activity-btn" data-field="activity" data-value="moderate" role="radio" aria-checked="false">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  <div><strong>Moderate</strong><small>Active job or daily walks</small></div>
+                </button>
+                <button class="activity-btn" data-field="activity" data-value="active" role="radio" aria-checked="false">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <div><strong>Very Active</strong><small>Physical job or athlete</small></div>
+                </button>
+              </div>
+            </div>
+            <button class="btn btn--primary btn--block" id="step2Next">Continue →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Experience -->
+        <div class="quiz-step quiz-step--hidden" id="step-3">
+          <div class="quiz-step__hd">
+            <h2>What's your training experience?</h2>
+            <p>Determines your split, volume, and exercise complexity.</p>
+          </div>
+          <div class="exp-grid">
+            <div class="exp-card" data-field="experience" data-value="beginner" role="button" tabindex="0">
+              <div class="exp-card__num">01</div>
+              <h3>Beginner</h3>
+              <p>Less than 1 year of consistent training, or returning after a long break.</p>
+              <ul>
+                <li>Focus on movement patterns</li>
+                <li>3 days / week recommended</li>
+                <li>Full body splits</li>
+              </ul>
+            </div>
+            <div class="exp-card" data-field="experience" data-value="intermediate" role="button" tabindex="0">
+              <div class="exp-card__num">02</div>
+              <h3>Intermediate</h3>
+              <p>1–3 years of consistent training. Solid form on the main compound lifts.</p>
+              <ul>
+                <li>Upper/Lower or PPL splits</li>
+                <li>4 days / week recommended</li>
+                <li>Higher training volume</li>
+              </ul>
+            </div>
+            <div class="exp-card" data-field="experience" data-value="advanced" role="button" tabindex="0">
+              <div class="exp-card__num">03</div>
+              <h3>Advanced</h3>
+              <p>3+ years of serious training. Strong on all main compound movements.</p>
+              <ul>
+                <li>Specialized splits</li>
+                <li>5–6 days / week</li>
+                <li>Periodization techniques</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Equipment -->
+        <div class="quiz-step quiz-step--hidden" id="step-4">
+          <div class="quiz-step__hd">
+            <h2>What equipment do you have?</h2>
+            <p>Select all that apply — exercises will match what you have access to.</p>
+          </div>
+          <div class="equip-grid">
+            <div class="equip-card" data-field="equipment" data-value="barbell" role="checkbox" tabindex="0" aria-checked="false">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M18 4v16M3 8h4m10 0h4M3 16h4m10 0h4M7 8h10v8H7z"/></svg>
+              <span>Barbell &amp; Rack</span>
+            </div>
+            <div class="equip-card" data-field="equipment" data-value="dumbbells" role="checkbox" tabindex="0" aria-checked="false">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12M6 16h12M4 8v8M20 8v8M2 10v4M22 10v4"/></svg>
+              <span>Dumbbells</span>
+            </div>
+            <div class="equip-card" data-field="equipment" data-value="cables" role="checkbox" tabindex="0" aria-checked="false">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v7M12 15v7M2 12h7m6 0h7"/></svg>
+              <span>Cable Machine</span>
+            </div>
+            <div class="equip-card" data-field="equipment" data-value="machines" role="checkbox" tabindex="0" aria-checked="false">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="6" height="18" rx="1"/><rect x="16" y="3" width="6" height="18" rx="1"/><path d="M8 8h8M8 16h8M8 12h8"/></svg>
+              <span>Gym Machines</span>
+            </div>
+            <div class="equip-card" data-field="equipment" data-value="cardio_eq" role="checkbox" tabindex="0" aria-checked="false">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span>Cardio Equipment</span>
+            </div>
+            <div class="equip-card" data-field="equipment" data-value="bodyweight" role="checkbox" tabindex="0" aria-checked="false">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="5" r="2"/><path d="M12 7v8m0 0l-3 4m3-4l3 4"/><path d="M8 12H4m12 0h4"/></svg>
+              <span>Bodyweight Only</span>
+            </div>
+          </div>
+          <button class="btn btn--primary btn--block" id="step4Next">Continue →</button>
+        </div>
+
+        <!-- STEP 5: Days -->
+        <div class="quiz-step quiz-step--hidden" id="step-5">
+          <div class="quiz-step__hd">
+            <h2>How many days can you train?</h2>
+            <p>Be realistic — consistency beats intensity every single time.</p>
+          </div>
+          <div class="days-grid">
+            <div class="days-card" data-field="days" data-value="3" role="button" tabindex="0">
+              <div class="days-card__num">3</div>
+              <div class="days-card__unit">days / week</div>
+              <p>Ideal for beginners or busy schedules.</p>
+            </div>
+            <div class="days-card" data-field="days" data-value="4" role="button" tabindex="0">
+              <div class="days-card__num">4</div>
+              <div class="days-card__unit">days / week</div>
+              <p>Most popular. Great balance of frequency and recovery.</p>
+            </div>
+            <div class="days-card" data-field="days" data-value="5" role="button" tabindex="0">
+              <div class="days-card__num">5</div>
+              <div class="days-card__unit">days / week</div>
+              <p>For intermediate to advanced athletes wanting more volume.</p>
+            </div>
+            <div class="days-card" data-field="days" data-value="6" role="button" tabindex="0">
+              <div class="days-card__num">6</div>
+              <div class="days-card__unit">days / week</div>
+              <p>High frequency. Advanced trainees with solid recovery.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.quiz-steps-viewport -->
+    </div><!-- /.quiz-wrap -->
+  </div>
+
+  <!-- ================================================
+       VIEW: DASHBOARD
+  ================================================ -->
+  <div id="view-dashboard" class="view">
+    <div class="container db-container">
+
+      <div class="db-header">
+        <div>
+          <p class="section__eyebrow" id="db-goal-label">Your Strength Plan</p>
+          <h1 class="db-title">Your Plan Is Ready</h1>
+          <p class="db-subtitle" id="db-profile-line">Personalised for your stats</p>
+        </div>
+        <div class="db-header__actions">
+          <button class="btn btn--ghost btn--sm" data-view="quiz">Redo Quiz</button>
+          <button class="btn btn--primary btn--sm" onclick="window.print()">Save Plan</button>
+        </div>
+      </div>
+
+      <!-- NUTRITION -->
+      <div class="db-block">
+        <div class="db-block__header">
+          <h2 class="db-block__title">Nutrition Targets</h2>
+          <span class="db-block__sub" id="db-calorie-note">Calibrated to your goal</span>
+        </div>
+        <div class="nutrition-grid">
+          <div class="nut-card nut-card--hero">
+            <div class="nut-card__label">Daily Calories</div>
+            <div class="nut-card__big" id="db-calories">—</div>
+            <div class="nut-card__unit">kcal / day</div>
+            <div class="nut-card__detail" id="db-bmr-line">BMR calculated</div>
+          </div>
+          <div class="nut-card">
+            <div class="nut-card__eyebrow">Protein</div>
+            <div class="nut-card__val accent" id="db-protein">—</div>
+            <div class="nut-bar-wrap"><div class="nut-bar nut-bar--p" id="bar-protein"></div></div>
+            <div class="nut-card__kcal" id="db-protein-kcal">— kcal</div>
+          </div>
+          <div class="nut-card">
+            <div class="nut-card__eyebrow">Carbohydrates</div>
+            <div class="nut-card__val" id="db-carbs" style="color:var(--blue)">—</div>
+            <div class="nut-bar-wrap"><div class="nut-bar nut-bar--c" id="bar-carbs"></div></div>
+            <div class="nut-card__kcal" id="db-carbs-kcal">— kcal</div>
+          </div>
+          <div class="nut-card">
+            <div class="nut-card__eyebrow">Fat</div>
+            <div class="nut-card__val" id="db-fat" style="color:var(--gold)">—</div>
+            <div class="nut-bar-wrap"><div class="nut-bar nut-bar--f" id="bar-fat"></div></div>
+            <div class="nut-card__kcal" id="db-fat-kcal">— kcal</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKOUT PLAN -->
+      <div class="db-block">
+        <div class="db-block__header">
+          <h2 class="db-block__title">Weekly Training Split</h2>
+          <span class="db-block__badge" id="db-split-label">—</span>
+        </div>
+        <div class="workout-week" id="db-workout-week"></div>
+      </div>
+
+      <!-- CARDIO -->
+      <div class="db-block">
+        <h2 class="db-block__title">Cardio Recommendation</h2>
+        <div class="cardio-row" id="db-cardio"></div>
+      </div>
+
+      <!-- TIPS -->
+      <div class="db-block">
+        <h2 class="db-block__title">Key Guidelines</h2>
+        <div class="tips-grid" id="db-tips"></div>
+      </div>
+
+      <!-- COACH CTA -->
+      <div class="db-cta">
+        <div class="db-cta__text">
+          <h2>Want Sean to coach you through this?</h2>
+          <p>This plan is your starting point. With 1-on-1 coaching, we adjust every week based on your progress, recovery, and feedback. Book a free call to see if we're a good fit.</p>
+          <div class="db-cta__bullets">
+            <span>Weekly program updates</span>
+            <span>Form review via video</span>
+            <span>Direct WhatsApp access</span>
+            <span>Nutrition adjustments</span>
+          </div>
+          <a href="mailto:sean@seannygrenpt.com" class="btn btn--primary btn--lg">Book a Free 15-Min Call with Sean →</a>
+        </div>
+        <div class="db-cta__card">
+          <div class="db-cta__img">
+            <div class="image-placeholder image-placeholder--sm">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="db-cta__info">
+            <strong>Sean Nygren</strong>
+            <span>Licensed PT · Stockholm</span>
+            <div class="db-cta__services">
+              <div>In-Person — from 850 SEK/session</div>
+              <div>Online Coaching — 3,500 SEK/month</div>
+              <div>Premium Package — 5,500 SEK/month</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       VIEW: LIBRARY
+  ================================================ -->
+  <div id="view-library" class="view">
+    <div class="container">
+      <div class="library-header">
+        <div>
+          <p class="section__eyebrow">Exercise Library</p>
+          <h1 class="section__heading">Browse Workouts</h1>
+          <p style="color:var(--muted);margin-top:8px;font-size:0.9rem">32 exercises across 4 categories. Filter below.</p>
+        </div>
+        <button class="btn btn--primary" data-view="quiz">Build My Plan →</button>
+      </div>
+      <div class="lib-filters" id="libFilters" role="group" aria-label="Filter exercises">
+        <button class="filter-pill filter-pill--active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="strength">Strength</button>
+        <button class="filter-pill" data-filter="hypertrophy">Hypertrophy</button>
+        <button class="filter-pill" data-filter="cardio">Cardio</button>
+        <button class="filter-pill" data-filter="bodyweight">Bodyweight</button>
+      </div>
+      <div class="exercise-grid" id="exerciseGrid" aria-label="Exercise list"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
