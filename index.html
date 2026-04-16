@@ -5,20 +5,38 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta name="description" content="Sean Nygren — Science-based personal training in Stockholm. Online coaching worldwide. Book a free 15-minute consultation."/>
   <title>Sean Nygren PT — Stockholm Personal Trainer</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,700;0,800;0,900;1,900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <style>
     html { scroll-behavior: smooth; }
     .chiseled-text {
-      text-shadow: 2px 2px 0px #561700, 5px 5px 0px rgba(0,0,0,0.4);
+      text-shadow: 2px 2px 0px #561700, 4px 4px 0px rgba(0,0,0,0.5);
     }
-    .neon-glow:hover {
-      box-shadow: 0 0 24px rgba(255,95,31,0.5);
+    .neon-glow-btn {
+      box-shadow: 0 0 15px transparent;
+      transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    }
+    .neon-glow-btn:hover {
+      box-shadow: 0 0 20px #ff5f1f;
+      transform: scale(1.05);
+    }
+    .neon-glow-btn:active {
+      transform: scale(0.97);
     }
     .glass-panel {
-      background: rgba(40,38,37,0.65);
+      background: rgba(53, 53, 52, 0.6);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
+    }
+    .smoky-shadow {
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: inherit;
+      line-height: 1;
+      vertical-align: middle;
     }
     .custom-scrollbar::-webkit-scrollbar { width: 4px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
@@ -26,6 +44,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       html { scroll-behavior: auto; }
+      .neon-glow-btn:hover { transform: none; }
     }
   </style>
   <script>
@@ -34,122 +53,167 @@
       theme: {
         extend: {
           colors: {
-            "pc":    "#ff5f1f",
-            "pc-h":  "#e04e0e",
-            "on-pc": "#1a0800",
-            "p":     "#ffb59c",
-            "bg":    "#131313",
-            "s":     "#1c1b1b",
-            "s-md":  "#201f1f",
-            "s-hi":  "#2a2a2a",
-            "s-max": "#353534",
-            "ov":    "#5b4138",
-            "os":    "#e5e2e1",
-            "osv":   "#c9b5ae",
+            "inverse-primary":           "#ab3600",
+            "on-tertiary-fixed":         "#001e30",
+            "tertiary-fixed":            "#cae6ff",
+            "on-secondary-fixed":        "#1b1c1c",
+            "secondary-fixed-dim":       "#c8c6c5",
+            "on-error":                  "#690005",
+            "inverse-surface":           "#e5e2e1",
+            "on-secondary":              "#303030",
+            "primary-fixed":             "#ffdbcf",
+            "on-tertiary":               "#00344f",
+            "on-background":             "#e5e2e1",
+            "surface-dim":               "#131313",
+            "surface-container-highest": "#353534",
+            "on-primary-container":      "#561700",
+            "on-primary":                "#5c1900",
+            "tertiary":                  "#8dcdff",
+            "surface-container-low":     "#1c1b1b",
+            "surface-variant":           "#353534",
+            "on-primary-fixed":          "#390c00",
+            "on-error-container":        "#ffdad6",
+            "error":                     "#ffb4ab",
+            "surface":                   "#131313",
+            "surface-bright":            "#393939",
+            "outline":                   "#aa897f",
+            "error-container":           "#93000a",
+            "surface-container":         "#201f1f",
+            "primary-fixed-dim":         "#ffb59c",
+            "inverse-on-surface":        "#313030",
+            "surface-container-lowest":  "#0e0e0e",
+            "on-secondary-container":    "#b6b5b4",
+            "secondary-container":       "#474746",
+            "surface-tint":              "#ffb59c",
+            "on-surface-variant":        "#c9b5ae",
+            "secondary-fixed":           "#e4e2e1",
+            "surface-container-high":    "#2a2a2a",
+            "primary-container":         "#ff5f1f",
+            "tertiary-container":        "#009de4",
+            "tertiary-fixed-dim":        "#8dcdff",
+            "on-surface":                "#e5e2e1",
+            "primary":                   "#ffb59c",
+            "background":                "#131313",
+            "secondary":                 "#c8c6c5",
+            "outline-variant":           "#5b4138"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg":      "2rem",
+            "xl":      "3rem",
+            "full":    "9999px"
           },
           fontFamily: {
             headline: ['"Plus Jakarta Sans"', "sans-serif"],
             body:     ["Manrope", "sans-serif"],
+            label:    ["Manrope", "sans-serif"]
           }
         }
       }
     }
   </script>
 </head>
-<body class="bg-bg text-os font-body antialiased overflow-x-hidden selection:bg-pc selection:text-on-pc">
+<body class="bg-background text-on-background font-body antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
 
 <!-- ================================================================
      NAV
 ================================================================ -->
-<nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-300">
-  <div class="flex justify-between items-center px-6 md:px-10 py-5 max-w-[1440px] mx-auto">
-    <a href="#" class="font-headline font-black italic text-xl tracking-tighter text-os">
-      Sean <span class="text-pc">Nygren</span>
+<nav id="nav" class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl bg-gradient-to-b from-[#131313] to-transparent shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+  <div class="flex justify-between items-center px-8 py-6 max-w-[1920px] mx-auto">
+    <a href="#" class="text-2xl font-black italic text-on-background tracking-tighter font-headline">
+      Sean Nygren
     </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#services" class="font-headline font-bold text-sm text-os/60 hover:text-os transition-colors tracking-tight">Training</a>
-      <a href="#about"    class="font-headline font-bold text-sm text-os/60 hover:text-os transition-colors tracking-tight">About</a>
-      <a href="#results"  class="font-headline font-bold text-sm text-os/60 hover:text-os transition-colors tracking-tight">Results</a>
-      <a href="#booking"  class="font-headline font-black text-sm text-pc border-b-2 border-pc pb-0.5 hover:shadow-[0_2px_12px_rgba(255,95,31,0.4)] transition-all tracking-tight">
-        Book a Session
-      </a>
+    <div class="hidden md:flex items-center gap-10">
+      <a href="#services" class="font-headline font-bold tracking-tight text-on-background hover:text-primary transition-colors">Training</a>
+      <a href="#about"    class="font-headline font-bold tracking-tight text-on-background hover:text-primary transition-colors">About</a>
+      <a href="#results"  class="font-headline font-bold tracking-tight text-on-background hover:text-primary transition-colors">Results</a>
     </div>
+    <a href="#booking" class="hidden md:block bg-primary-container text-on-primary-container px-8 py-3 rounded-full font-headline font-bold tracking-tight hover:scale-105 hover:shadow-[0_0_15px_#ff5f1f] transition-all duration-300">
+      Book a Session
+    </a>
     <button id="burger" aria-label="Toggle menu" aria-expanded="false" class="md:hidden flex flex-col gap-[5px] p-2">
-      <span class="block w-5 h-0.5 bg-os rounded transition-all duration-300 origin-center" id="b1"></span>
-      <span class="block w-5 h-0.5 bg-os rounded transition-all duration-300" id="b2"></span>
-      <span class="block w-5 h-0.5 bg-os rounded transition-all duration-300 origin-center" id="b3"></span>
+      <span class="block w-5 h-0.5 bg-on-background rounded transition-all duration-300 origin-center" id="b1"></span>
+      <span class="block w-5 h-0.5 bg-on-background rounded transition-all duration-300" id="b2"></span>
+      <span class="block w-5 h-0.5 bg-on-background rounded transition-all duration-300 origin-center" id="b3"></span>
     </button>
   </div>
   <!-- Mobile menu -->
-  <div id="mobileMenu" class="hidden md:hidden absolute inset-x-0 top-full bg-s border-t border-ov/20 px-6 py-8 flex flex-col gap-6 shadow-2xl">
-    <a href="#services" class="font-headline font-black text-2xl text-os">Training</a>
-    <a href="#about"    class="font-headline font-black text-2xl text-os">About</a>
-    <a href="#results"  class="font-headline font-black text-2xl text-os">Results</a>
-    <a href="#booking"  class="font-headline font-black text-2xl text-pc">Book a Session</a>
+  <div id="mobileMenu" class="hidden md:hidden absolute inset-x-0 top-full bg-surface-container-low border-t border-outline-variant/10 px-8 py-8 flex flex-col gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+    <a href="#services" class="font-headline font-black text-2xl text-on-background">Training</a>
+    <a href="#about"    class="font-headline font-black text-2xl text-on-background">About</a>
+    <a href="#results"  class="font-headline font-black text-2xl text-on-background">Results</a>
+    <a href="#booking"  class="font-headline font-black text-2xl text-primary-container">Book a Session</a>
   </div>
 </nav>
 
 <!-- ================================================================
      HERO
 ================================================================ -->
-<section class="relative min-h-[100dvh] flex items-center overflow-hidden pt-24 pb-16">
-  <!-- Background orbs -->
-  <div class="absolute -top-40 -left-32 w-[560px] h-[560px] bg-pc/8 blur-[130px] rounded-full pointer-events-none" aria-hidden="true"></div>
-  <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-pc/5 blur-[100px] rounded-full pointer-events-none" aria-hidden="true"></div>
+<section class="relative min-h-[100dvh] flex items-center overflow-hidden">
+  <!-- Full-width background image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      class="w-full h-full object-cover opacity-40"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKPUhPivu1D5njMimTZ9SM9lreqT2tzThXGkr-7717fZ07Q3bWXVJlS0BWtULnf-aWfd-b5qtd0g-eMYcBMNbAhbM5fIIT57rCPIJIm0Qp7CgU8GiKr0DfrVsbuMayOPKAsl-ToLlHz8e3nDLiqWqFbrSwwavpaJawm3UVcWhNrQC-8qbfYk-ma9VXpJzQrf9BhHsqVouPmG3qOkjO-XHC2LaXQKwl8MGJPmK2YVThq3Dm6-AM2QvfLM9fV-yy2QhAoXNgXJnESVA"
+      alt="Dark high-end gym interior with dramatic orange accent lighting"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent"></div>
+  </div>
 
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+  <div class="relative z-10 max-w-[1920px] mx-auto px-8 grid md:grid-cols-2 gap-12 items-center w-full pt-32 pb-24">
     <!-- Copy -->
-    <div>
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pc/30 bg-pc/8 text-p text-xs font-bold uppercase tracking-widest mb-8">
-        <span class="w-1.5 h-1.5 rounded-full bg-pc animate-pulse" aria-hidden="true"></span>
+    <div class="space-y-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-container/30 bg-primary-container/10 text-primary text-xs font-bold uppercase tracking-widest">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse" aria-hidden="true"></span>
         Licensed PT · Stockholm, Sweden
       </div>
-      <h1 class="font-headline font-black text-[clamp(3.5rem,8vw,6rem)] chiseled-text leading-[0.9] tracking-tighter uppercase mb-8">
-        Build<br/>the body<br/><em class="not-italic text-pc">you want.</em>
+      <h1 class="text-[clamp(4rem,9vw,8rem)] font-headline font-black chiseled-text leading-[0.88] tracking-tighter uppercase italic">
+        Build<br/>
+        <span class="text-primary-container">the body</span><br/>
+        you want.
       </h1>
-      <p class="text-osv text-lg leading-relaxed max-w-lg mb-10">
+      <p class="text-xl text-secondary max-w-md leading-relaxed">
         Science-based strength and hypertrophy programming. Real progressive overload. No templates — just training that actually works.
       </p>
-      <div class="flex flex-wrap gap-4 mb-10">
-        <a href="#booking" class="font-headline font-black text-xs uppercase tracking-widest px-8 py-4 bg-pc text-on-pc rounded-full neon-glow transition-all duration-300 hover:scale-[1.03] hover:bg-pc-h">
-          Book Free Consultation →
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a href="#booking" class="neon-glow-btn bg-primary-container text-on-primary-container px-10 py-5 rounded-full font-headline font-extrabold text-base uppercase tracking-wider">
+          Book Free Consultation
         </a>
-        <a href="#services" class="font-headline font-black text-xs uppercase tracking-widest px-8 py-4 border border-ov/30 text-os rounded-full hover:border-pc transition-all duration-300">
+        <a href="#services" class="px-10 py-5 rounded-full border border-on-background/20 font-headline font-extrabold text-base uppercase tracking-wider hover:bg-on-background/5 transition-all duration-300">
           See Training Options
         </a>
       </div>
-      <div class="flex flex-wrap gap-6 text-xs font-bold uppercase tracking-widest text-os/30">
-        <span>No commitment</span>
-        <span>·</span>
-        <span>Science-based</span>
-        <span>·</span>
+      <div class="flex flex-wrap gap-6 text-xs font-bold uppercase tracking-widest text-on-background/25">
+        <span>No commitment</span><span>·</span>
+        <span>Science-based</span><span>·</span>
         <span>Results or refund</span>
       </div>
     </div>
 
     <!-- Photo + floating card -->
-    <div class="relative hidden lg:block">
-      <div class="relative rounded-2xl overflow-hidden aspect-[3/4] shadow-2xl">
+    <div class="relative hidden md:block">
+      <div class="absolute -inset-10 bg-primary-container/20 blur-[120px] rounded-full pointer-events-none" aria-hidden="true"></div>
+      <div class="relative z-10 overflow-hidden rounded-xl aspect-[3/4] smoky-shadow">
         <img
+          class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 transform rotate-2"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO7P-GMU2V3x0sAn9D58WYfVQg2eQeyNm9d3kAdgUiL5o-m9Cqrv3zv5NzR_1j9ZGYhNhecjMBsYMEfZN13fOELRhdrLW0XMoZ03tk4E6_IhmlDy9eR1Q5zJLuMzYlCXTebXm2LbfW2gv2LXJa9l5qs0ryliFnDsKfrnMWfbEcglOeWzCoBrxSy2jIYtoxlnXnrh2U8JXheffdDC__iBvpyq2qDHHUo-2rBmC7U6r3p8R1ZUNaInMKID9NaqMD5tm3RnPskMc_40I"
-          alt="Athlete training in a dark gym with dramatic lighting"
-          class="w-full h-full object-cover"
+          alt="Athlete training with dramatic lighting"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
         <div class="absolute bottom-8 left-8 right-8">
-          <p class="font-headline font-black italic text-4xl text-os leading-none chiseled-text uppercase">No excuses.<br/>Just results.</p>
+          <p class="font-headline font-black italic text-3xl chiseled-text uppercase leading-none">No excuses.<br/>Just results.</p>
         </div>
       </div>
       <!-- Floating availability card -->
-      <div class="absolute -bottom-5 -left-5 bg-s-hi border border-ov/20 rounded-xl p-5 shadow-2xl">
-        <p class="text-xs font-bold uppercase tracking-widest text-os/40 mb-1">This month</p>
-        <p class="font-headline font-black text-xl text-os">3 spots left</p>
+      <div class="absolute -bottom-5 -left-5 bg-surface-container-high rounded-xl p-5 smoky-shadow">
+        <p class="text-xs font-bold uppercase tracking-widest text-on-surface/40 mb-1">This month</p>
+        <p class="font-headline font-black text-xl text-on-surface">3 spots left</p>
         <div class="flex gap-1 mt-3">
-          <div class="h-1.5 rounded-full bg-pc w-8"></div>
-          <div class="h-1.5 rounded-full bg-pc w-8"></div>
-          <div class="h-1.5 rounded-full bg-pc w-8"></div>
-          <div class="h-1.5 rounded-full bg-s-max w-5"></div>
-          <div class="h-1.5 rounded-full bg-s-max w-5"></div>
+          <div class="h-1.5 rounded-full bg-primary-container w-8"></div>
+          <div class="h-1.5 rounded-full bg-primary-container w-8"></div>
+          <div class="h-1.5 rounded-full bg-primary-container w-8"></div>
+          <div class="h-1.5 rounded-full bg-surface-container-highest w-5"></div>
+          <div class="h-1.5 rounded-full bg-surface-container-highest w-5"></div>
         </div>
       </div>
     </div>
@@ -157,169 +221,218 @@
 </section>
 
 <!-- ================================================================
-     STATS BAR
+     STATS BENTO
 ================================================================ -->
-<div class="border-y border-ov/15 bg-s py-8">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-    <div>
-      <p class="font-headline font-black text-5xl text-pc mb-1">100+</p>
-      <p class="text-xs font-bold uppercase tracking-widest text-os/40">Clients Coached</p>
+<section class="py-24 px-8 max-w-[1920px] mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <!-- Large bento card -->
+    <div class="md:col-span-2 bg-surface-container-low rounded-xl p-12 flex flex-col justify-between min-h-[280px] smoky-shadow">
+      <div class="text-primary-container">
+        <span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">monitoring</span>
+      </div>
+      <div>
+        <h3 class="text-5xl font-headline font-black mb-2">100+</h3>
+        <p class="text-secondary font-label uppercase tracking-widest text-sm">Clients coached to real results</p>
+      </div>
     </div>
-    <div>
-      <p class="font-headline font-black text-5xl text-pc mb-1">5★</p>
-      <p class="text-xs font-bold uppercase tracking-widest text-os/40">Average Rating</p>
+    <!-- Scientific precision card -->
+    <div class="bg-surface-container-high rounded-xl p-10 flex flex-col justify-between smoky-shadow">
+      <h3 class="text-2xl font-headline font-bold">Scientific Precision</h3>
+      <p class="text-on-surface-variant text-sm leading-relaxed mt-4">Evidence-based programming for maximum physique efficiency. No guesswork.</p>
     </div>
-    <div>
-      <p class="font-headline font-black text-5xl text-pc mb-1">3+</p>
-      <p class="text-xs font-bold uppercase tracking-widest text-os/40">Years Experience</p>
-    </div>
-    <div>
-      <p class="font-headline font-black text-5xl text-pc mb-1">12</p>
-      <p class="text-xs font-bold uppercase tracking-widest text-os/40">Programs Built</p>
+    <!-- Accent CTA card -->
+    <div class="bg-primary-container rounded-xl p-10 flex flex-col justify-between text-on-primary-container smoky-shadow">
+      <h3 class="text-2xl font-headline font-bold">Elite Access</h3>
+      <p class="text-on-primary-container/80 text-sm leading-relaxed mt-4">Limited spots available for 1-on-1 performance coaching in Stockholm.</p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ================================================================
      SERVICES
 ================================================================ -->
-<section id="services" class="py-24 md:py-32">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-      <div>
-        <p class="text-xs font-bold uppercase tracking-[0.3em] text-pc mb-4">Training Options</p>
-        <h2 class="font-headline font-black text-[clamp(2.8rem,6vw,5rem)] leading-none tracking-tighter text-os">
-          How we<br/><span class="text-pc">work together</span>
-        </h2>
-      </div>
-      <p class="text-osv text-sm leading-relaxed max-w-xs md:text-right">
-        Every programme is built around your goals, schedule, and available equipment. No templates. No guesswork.
-      </p>
-    </div>
+<section id="services" class="py-16 pb-32 px-8 max-w-[1920px] mx-auto">
+  <div class="mb-20">
+    <p class="text-xs font-bold uppercase tracking-[0.3em] text-primary-container mb-4">Training Options</p>
+    <h2 class="text-[clamp(2.8rem,6vw,5rem)] font-headline font-black uppercase italic chiseled-text tracking-tighter leading-none mb-6">
+      How we <span class="text-primary-container">work together</span>
+    </h2>
+    <p class="text-xl text-on-surface-variant max-w-2xl">Every programme is built around your goals, schedule, and available equipment. No templates. No guesswork.</p>
+  </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- In-person -->
-      <div class="bg-s border border-ov/15 rounded-2xl p-8 hover:border-pc/40 transition-all duration-300 group flex flex-col">
-        <div class="w-11 h-11 rounded-full bg-s-max flex items-center justify-center mb-6 group-hover:bg-pc/15 transition-colors">
-          <svg class="w-5 h-5 text-pc" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <p class="text-xs font-bold uppercase tracking-widest text-p mb-2">1-on-1</p>
-        <h3 class="font-headline font-black text-2xl text-os mb-4">In-Person PT</h3>
-        <p class="text-osv text-sm leading-relaxed mb-8 flex-1">Face-to-face sessions in Stockholm. Technique coaching, real-time feedback, and fully personalised programming.</p>
-        <ul class="space-y-2.5 mb-8">
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Full technique assessment</li>
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Customised programming</li>
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Nutrition guidance</li>
-        </ul>
-        <div class="border-t border-ov/15 pt-6 mt-auto">
-          <p class="text-xs text-os/35 font-bold uppercase tracking-widest mb-1">From</p>
-          <p class="font-headline font-black text-3xl text-os">850 <span class="text-lg font-bold text-os/40">SEK/session</span></p>
-        </div>
-      </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <!-- Online (featured) -->
-      <div class="bg-s border-2 border-pc rounded-2xl p-8 relative shadow-[0_0_48px_rgba(255,95,31,0.12)] flex flex-col">
-        <div class="absolute top-6 right-6">
-          <span class="px-3 py-1 bg-pc text-on-pc text-xs font-black uppercase tracking-widest rounded-full">Most Popular</span>
-        </div>
-        <div class="w-11 h-11 rounded-full bg-pc/15 flex items-center justify-center mb-6">
-          <svg class="w-5 h-5 text-pc" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-        <p class="text-xs font-bold uppercase tracking-widest text-p mb-2">Remote</p>
-        <h3 class="font-headline font-black text-2xl text-os mb-4">Online Coaching</h3>
-        <p class="text-osv text-sm leading-relaxed mb-8 flex-1">Full-service remote coaching. Weekly check-ins, app access, nutrition tracking, and direct messaging — wherever you are.</p>
-        <ul class="space-y-2.5 mb-8">
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Weekly video check-ins</li>
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Daily messaging support</li>
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Full macro programming</li>
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Monthly adjustments</li>
-        </ul>
-        <div class="border-t border-ov/20 pt-6 mt-auto">
-          <p class="text-xs text-os/35 font-bold uppercase tracking-widest mb-1">From</p>
-          <p class="font-headline font-black text-3xl text-os">3 500 <span class="text-lg font-bold text-os/40">SEK/month</span></p>
-        </div>
+    <!-- In-person -->
+    <div class="bg-surface-container-low rounded-xl p-8 flex flex-col hover:bg-surface-container transition-all duration-500 smoky-shadow group">
+      <div class="text-primary-container mb-6">
+        <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">person</span>
       </div>
-
-      <!-- Premium -->
-      <div class="bg-s border border-ov/15 rounded-2xl p-8 hover:border-pc/40 transition-all duration-300 group flex flex-col">
-        <div class="w-11 h-11 rounded-full bg-s-max flex items-center justify-center mb-6 group-hover:bg-pc/15 transition-colors">
-          <svg class="w-5 h-5 text-pc" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="text-xs font-bold uppercase tracking-widest text-p mb-2">Full Service</p>
-        <h3 class="font-headline font-black text-2xl text-os mb-4">Premium Package</h3>
-        <p class="text-osv text-sm leading-relaxed mb-8 flex-1">The complete package. In-person sessions combined with online coaching, nutrition, and lifestyle optimisation.</p>
-        <ul class="space-y-2.5 mb-8">
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Everything in Online</li>
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>2× in-person/week</li>
-          <li class="flex items-center gap-2.5 text-sm text-os/70"><span class="w-1 h-1 rounded-full bg-pc flex-shrink-0"></span>Sleep & lifestyle coaching</li>
-        </ul>
-        <div class="border-t border-ov/15 pt-6 mt-auto">
-          <p class="text-xs text-os/35 font-bold uppercase tracking-widest mb-1">From</p>
-          <p class="font-headline font-black text-3xl text-os">5 500 <span class="text-lg font-bold text-os/40">SEK/month</span></p>
-        </div>
+      <p class="text-xs font-bold uppercase tracking-widest text-primary mb-2">1-on-1</p>
+      <h3 class="font-headline font-black text-2xl text-on-background mb-4">In-Person PT</h3>
+      <p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-1">Face-to-face sessions in Stockholm. Technique coaching, real-time feedback, and fully personalised programming.</p>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-sm text-on-surface/70">
+          <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Full technique assessment
+        </li>
+        <li class="flex items-center gap-3 text-sm text-on-surface/70">
+          <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Customised programming
+        </li>
+        <li class="flex items-center gap-3 text-sm text-on-surface/70">
+          <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Nutrition guidance
+        </li>
+      </ul>
+      <div class="pt-6 mt-auto border-t border-outline-variant/10">
+        <p class="text-xs text-on-surface/35 font-bold uppercase tracking-widest mb-1">From</p>
+        <p class="font-headline font-black text-3xl text-on-background">850 <span class="text-lg font-bold text-on-surface/40">SEK/session</span></p>
       </div>
     </div>
 
-    <div class="text-center mt-12">
-      <a href="#booking" class="inline-flex items-center gap-2 font-headline font-bold text-sm uppercase tracking-widest text-pc border-b border-pc pb-0.5 hover:shadow-[0_2px_12px_rgba(255,95,31,0.3)] transition-all">
-        Not sure which fits? Book a free 15-min call →
-      </a>
+    <!-- Online — featured -->
+    <div class="bg-primary-container rounded-xl p-8 flex flex-col relative shadow-[0_0_60px_rgba(255,95,31,0.25)]">
+      <div class="absolute top-6 right-6">
+        <span class="px-3 py-1 bg-on-primary-container/15 text-on-primary-container text-xs font-black uppercase tracking-widest rounded-full">Most Popular</span>
+      </div>
+      <div class="text-on-primary-container mb-6">
+        <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">computer</span>
+      </div>
+      <p class="text-xs font-bold uppercase tracking-widest text-on-primary-container/70 mb-2">Remote</p>
+      <h3 class="font-headline font-black text-2xl text-on-primary-container mb-4">Online Coaching</h3>
+      <p class="text-on-primary-container/80 text-sm leading-relaxed mb-8 flex-1">Full-service remote coaching. Weekly check-ins, nutrition tracking, and direct messaging — wherever you are.</p>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-sm text-on-primary-container/80">
+          <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Weekly video check-ins
+        </li>
+        <li class="flex items-center gap-3 text-sm text-on-primary-container/80">
+          <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Daily messaging support
+        </li>
+        <li class="flex items-center gap-3 text-sm text-on-primary-container/80">
+          <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Full macro programming
+        </li>
+        <li class="flex items-center gap-3 text-sm text-on-primary-container/80">
+          <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Monthly adjustments
+        </li>
+      </ul>
+      <div class="pt-6 mt-auto border-t border-on-primary-container/20">
+        <p class="text-xs text-on-primary-container/50 font-bold uppercase tracking-widest mb-1">From</p>
+        <p class="font-headline font-black text-3xl text-on-primary-container">3 500 <span class="text-lg font-bold text-on-primary-container/60">SEK/month</span></p>
+      </div>
     </div>
+
+    <!-- Premium -->
+    <div class="bg-surface-container-low rounded-xl p-8 flex flex-col hover:bg-surface-container transition-all duration-500 smoky-shadow group">
+      <div class="text-primary-container mb-6">
+        <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+      </div>
+      <p class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Full Service</p>
+      <h3 class="font-headline font-black text-2xl text-on-background mb-4">Premium Package</h3>
+      <p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-1">The complete package. In-person sessions combined with online coaching, nutrition, and lifestyle optimisation.</p>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-sm text-on-surface/70">
+          <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Everything in Online
+        </li>
+        <li class="flex items-center gap-3 text-sm text-on-surface/70">
+          <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          2× in-person/week
+        </li>
+        <li class="flex items-center gap-3 text-sm text-on-surface/70">
+          <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+          Sleep &amp; lifestyle coaching
+        </li>
+      </ul>
+      <div class="pt-6 mt-auto border-t border-outline-variant/10">
+        <p class="text-xs text-on-surface/35 font-bold uppercase tracking-widest mb-1">From</p>
+        <p class="font-headline font-black text-3xl text-on-background">5 500 <span class="text-lg font-bold text-on-surface/40">SEK/month</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-16">
+    <a href="#booking" class="inline-flex items-center gap-2 font-headline font-bold text-sm uppercase tracking-widest text-primary-container border-b border-primary-container pb-0.5 hover:shadow-[0_2px_12px_rgba(255,95,31,0.3)] transition-all">
+      Not sure which fits? Book a free 15-min call
+      <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
   </div>
 </section>
 
 <!-- ================================================================
-     ABOUT
+     ABOUT / THE EVIDENCE
 ================================================================ -->
-<section id="about" class="py-24 md:py-32 bg-s border-y border-ov/15">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-    <!-- Photo -->
-    <div class="relative order-2 lg:order-1">
-      <div class="rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl">
-        <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDSD7TOpipM33Z0ay62DT5Q8yJZ1qMWveMO7X2PfvNlWBFZRtdnvZ_qZDKL0A736j3D9e5zO-3qQuiChRLxKxzf5g3GleFQJ8zgDO53NImQLeyXBju59bSspftUTsfLkrCUVxkqcpB8e_F8EUaSXnVX_I5nrs-_gRfXQTaSw03S0j3cr6GNtu4AYBKuDAzK1dEVP3-mQzsRlj9FKvhGXbJ9RCdyhodHM-rjrshJaNXaO27CdHIQGk_QRx3e8j-o15u0wS0eNIYomM"
-          alt="Sean Nygren personal trainer"
-          class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-        />
-      </div>
-      <div class="absolute -bottom-4 -right-4 bg-pc text-on-pc rounded-xl px-5 py-4 shadow-2xl">
-        <p class="font-headline font-black text-sm uppercase tracking-tight leading-none">Certified PT</p>
-        <p class="text-xs font-bold opacity-75 mt-1">Stockholm, Sweden</p>
-      </div>
+<section id="about" class="py-32 bg-surface-container-lowest relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-1/3 h-full bg-primary-container/5 blur-[150px] pointer-events-none" aria-hidden="true"></div>
+  <div class="max-w-[1440px] mx-auto px-8">
+    <div class="mb-20">
+      <p class="text-xs font-bold uppercase tracking-[0.3em] text-primary-container mb-4">About Sean</p>
+      <h2 class="text-[clamp(3rem,7vw,6rem)] font-headline font-black uppercase italic chiseled-text tracking-tighter leading-none mb-6">
+        The Evidence
+      </h2>
+      <div class="w-24 h-2 bg-primary-container"></div>
     </div>
 
-    <!-- Text -->
-    <div class="order-1 lg:order-2">
-      <p class="text-xs font-bold uppercase tracking-[0.3em] text-pc mb-6">About Sean</p>
-      <h2 class="font-headline font-black text-[clamp(2.4rem,5vw,4rem)] leading-[1.0] tracking-tighter text-os mb-8">
-        I coach people who are done making excuses.
-      </h2>
-      <div class="space-y-4 text-osv leading-relaxed text-sm mb-10">
-        <p>I'm Sean Nygren — a certified personal trainer based in Stockholm. I got into this because I know what it feels like to train hard with no real direction. Once I found science-based programming, everything changed.</p>
-        <p>My approach is simple: understand your goal, build a programme that fits your life, and execute with consistency. No crash diets, no extreme protocols, no gimmicks. Just progressive, evidence-based training.</p>
-        <p>Whether you're in Stockholm and want to train in person, or you're anywhere in the world and need remote coaching — I build programmes that actually work.</p>
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Text + quote side -->
+      <div class="space-y-10">
+        <div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary-container">
+          <p class="text-xl font-headline font-bold italic mb-4">"Sean didn't just change my physique; he rewired how I think about training. This is the gold standard of coaching."</p>
+          <span class="text-primary font-label uppercase tracking-widest text-sm">— Marcus L., Online Client · Stockholm</span>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+          <div>
+            <div class="text-primary-container text-4xl font-headline font-black mb-1">100+</div>
+            <div class="text-secondary text-xs uppercase tracking-widest font-bold">Clients Coached</div>
+          </div>
+          <div>
+            <div class="text-primary-container text-4xl font-headline font-black mb-1">5★</div>
+            <div class="text-secondary text-xs uppercase tracking-widest font-bold">Average Rating</div>
+          </div>
+          <div>
+            <div class="text-primary-container text-4xl font-headline font-black mb-1">3+</div>
+            <div class="text-secondary text-xs uppercase tracking-widest font-bold">Years Active</div>
+          </div>
+        </div>
+        <div class="space-y-4 text-on-surface-variant leading-relaxed text-sm">
+          <p>I'm Sean Nygren — a certified personal trainer based in Stockholm. I got into this because I know what it feels like to train hard with no real direction. Once I found science-based programming, everything changed.</p>
+          <p>My approach is simple: understand your goal, build a programme that fits your life, and execute with consistency. No crash diets, no extreme protocols, no gimmicks. Just progressive, evidence-based training.</p>
+          <p>Whether you're in Stockholm and want to train in person, or you're anywhere in the world and need remote coaching — I build programmes that actually work.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-surface-container p-4 rounded-xl">
+            <p class="font-headline font-bold text-on-background text-sm">Licensed PT</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">Certified &amp; insured</p>
+          </div>
+          <div class="bg-surface-container p-4 rounded-xl">
+            <p class="font-headline font-bold text-on-background text-sm">Evidence-Based</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">Science-first approach</p>
+          </div>
+        </div>
+        <a href="#booking" class="neon-glow-btn inline-flex items-center gap-3 bg-primary-container text-on-primary-container px-10 py-5 rounded-full font-headline font-extrabold uppercase tracking-wider text-base">
+          Work with me
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
       </div>
-      <div class="grid grid-cols-2 gap-3 mb-10">
-        <div class="bg-s-md border border-ov/15 rounded-xl p-4">
-          <p class="font-headline font-bold text-os text-sm">Licensed PT</p>
-          <p class="text-xs text-os/40 mt-0.5">Certified & insured</p>
-        </div>
-        <div class="bg-s-md border border-ov/15 rounded-xl p-4">
-          <p class="font-headline font-bold text-os text-sm">Evidence-Based</p>
-          <p class="text-xs text-os/40 mt-0.5">Science-first approach</p>
-        </div>
-        <div class="bg-s-md border border-ov/15 rounded-xl p-4">
-          <p class="font-headline font-bold text-os text-sm">Stockholm</p>
-          <p class="text-xs text-os/40 mt-0.5">In-person & remote</p>
-        </div>
-        <div class="bg-s-md border border-ov/15 rounded-xl p-4">
-          <p class="font-headline font-bold text-os text-sm">100+ Clients</p>
-          <p class="text-xs text-os/40 mt-0.5">Real results</p>
+
+      <!-- Photo side -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-primary-container/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true"></div>
+        <div class="relative overflow-hidden rounded-xl bg-surface-container-high aspect-[4/5] smoky-shadow">
+          <img
+            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDSD7TOpipM33Z0ay62DT5Q8yJZ1qMWveMO7X2PfvNlWBFZRtdnvZ_qZDKL0A736j3D9e5zO-3qQuiChRLxKxzf5g3GleFQJ8zgDO53NImQLeyXBju59bSspftUTsfLkrCUVxkqcpB8e_F8EUaSXnVX_I5nrs-_gRfXQTaSw03S0j3cr6GNtu4AYBKuDAzK1dEVP3-mQzsRlj9FKvhGXbJ9RCdyhodHM-rjrshJaNXaO27CdHIQGk_QRx3e8j-o15u0wS0eNIYomM"
+            alt="Sean Nygren personal trainer"
+          />
+          <div class="absolute bottom-0 left-0 right-0 p-8 glass-panel flex justify-between items-center">
+            <span class="font-headline font-black uppercase text-lg chiseled-text">Licensed PT · Stockholm</span>
+            <span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">verified</span>
+          </div>
         </div>
       </div>
-      <a href="#booking" class="inline-flex items-center gap-3 font-headline font-black text-xs uppercase tracking-widest px-8 py-4 bg-pc text-on-pc rounded-full neon-glow transition-all duration-300 hover:scale-[1.03] hover:bg-pc-h">
-        Work with me →
-      </a>
     </div>
   </div>
 </section>
@@ -327,66 +440,75 @@
 <!-- ================================================================
      TESTIMONIALS
 ================================================================ -->
-<section id="results" class="py-24 md:py-32">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
-    <div class="mb-16">
-      <p class="text-xs font-bold uppercase tracking-[0.3em] text-pc mb-4">Results</p>
-      <h2 class="font-headline font-black text-[clamp(2.8rem,6vw,5rem)] leading-none tracking-tighter text-os">
-        What clients say
-      </h2>
+<section id="results" class="py-32 px-8 max-w-[1920px] mx-auto">
+  <div class="mb-20 text-center">
+    <p class="text-xs font-bold uppercase tracking-[0.3em] text-primary-container mb-4">Results</p>
+    <h2 class="text-[clamp(2.8rem,6vw,5rem)] font-headline font-black uppercase italic chiseled-text tracking-tighter leading-none mb-6">
+      What clients say
+    </h2>
+    <div class="w-24 h-2 bg-primary-container mx-auto"></div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+    <!-- Card 1 -->
+    <div class="bg-surface-container-low rounded-xl p-8 smoky-shadow">
+      <div class="flex gap-1 mb-6" aria-label="5 stars">
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+      </div>
+      <blockquote class="text-on-surface font-medium leading-relaxed mb-8 text-[0.95rem] italic">
+        "Sean's programming is unlike anything I've followed before. In 3 months I added 20kg to my squat and finally understood why I was spinning my wheels."
+      </blockquote>
+      <div class="flex items-center gap-4 border-t border-outline-variant/10 pt-6">
+        <div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary-container font-headline font-black">M</div>
+        <div>
+          <p class="font-headline font-bold text-on-background">Marcus L.</p>
+          <p class="text-xs text-on-surface-variant uppercase tracking-widest mt-0.5">Online Client · Stockholm</p>
+        </div>
+      </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-      <!-- Card 1 -->
-      <div class="bg-s border border-ov/15 rounded-2xl p-8">
-        <div class="flex gap-1 mb-6" aria-label="5 stars">
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <blockquote class="text-os font-medium leading-relaxed mb-8 text-[0.95rem]">
-          "Sean's programming is unlike anything I've followed before. In 3 months I added 20kg to my squat and finally understood why I was spinning my wheels."
-        </blockquote>
-        <div class="border-t border-ov/15 pt-6">
-          <p class="font-headline font-bold text-os">Marcus L.</p>
-          <p class="text-xs text-os/35 uppercase tracking-widest mt-1">Online Client · Stockholm</p>
+
+    <!-- Card 2 (offset) -->
+    <div class="bg-surface-container-low rounded-xl p-8 md:mt-10 smoky-shadow">
+      <div class="flex gap-1 mb-6" aria-label="5 stars">
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+      </div>
+      <blockquote class="text-on-surface font-medium leading-relaxed mb-8 text-[0.95rem] italic">
+        "I've had PTs before but none who explained the WHY behind every exercise. Sean's science-first approach is genuinely different. I'm stronger and smarter about training now."
+      </blockquote>
+      <div class="flex items-center gap-4 border-t border-outline-variant/10 pt-6">
+        <div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary-container font-headline font-black">J</div>
+        <div>
+          <p class="font-headline font-bold text-on-background">Johanna K.</p>
+          <p class="text-xs text-on-surface-variant uppercase tracking-widest mt-0.5">In-Person Client · Stockholm</p>
         </div>
       </div>
+    </div>
 
-      <!-- Card 2 (offset) -->
-      <div class="bg-s border border-ov/15 rounded-2xl p-8 md:mt-10">
-        <div class="flex gap-1 mb-6" aria-label="5 stars">
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <blockquote class="text-os font-medium leading-relaxed mb-8 text-[0.95rem]">
-          "I've had PTs before but none who explained the WHY behind every exercise. Sean's science-first approach is genuinely different. I'm stronger and smarter about training now."
-        </blockquote>
-        <div class="border-t border-ov/15 pt-6">
-          <p class="font-headline font-bold text-os">Johanna K.</p>
-          <p class="text-xs text-os/35 uppercase tracking-widest mt-1">In-Person Client · Stockholm</p>
-        </div>
+    <!-- Card 3 -->
+    <div class="bg-surface-container-low rounded-xl p-8 smoky-shadow">
+      <div class="flex gap-1 mb-6" aria-label="5 stars">
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
+        <span class="material-symbols-outlined text-primary-container text-lg" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">star</span>
       </div>
-
-      <!-- Card 3 -->
-      <div class="bg-s border border-ov/15 rounded-2xl p-8">
-        <div class="flex gap-1 mb-6" aria-label="5 stars">
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 text-pc fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <blockquote class="text-os font-medium leading-relaxed mb-8 text-[0.95rem]">
-          "Lost 8kg in 12 weeks without feeling like I was starving. The nutrition programming was dialled in perfectly and the weekly check-ins kept me honest."
-        </blockquote>
-        <div class="border-t border-ov/15 pt-6">
-          <p class="font-headline font-bold text-os">Erik P.</p>
-          <p class="text-xs text-os/35 uppercase tracking-widest mt-1">Online Client · Gothenburg</p>
+      <blockquote class="text-on-surface font-medium leading-relaxed mb-8 text-[0.95rem] italic">
+        "Lost 8kg in 12 weeks without feeling like I was starving. The nutrition programming was dialled in perfectly and the weekly check-ins kept me honest."
+      </blockquote>
+      <div class="flex items-center gap-4 border-t border-outline-variant/10 pt-6">
+        <div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary-container font-headline font-black">E</div>
+        <div>
+          <p class="font-headline font-bold text-on-background">Erik P.</p>
+          <p class="text-xs text-on-surface-variant uppercase tracking-widest mt-0.5">Online Client · Gothenburg</p>
         </div>
       </div>
     </div>
@@ -394,94 +516,125 @@
 </section>
 
 <!-- ================================================================
+     CTA SECTION
+================================================================ -->
+<section class="py-40 px-8">
+  <div class="max-w-5xl mx-auto bg-surface-container-high rounded-xl p-16 text-center relative overflow-hidden smoky-shadow">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-container/10 via-transparent to-transparent pointer-events-none" aria-hidden="true"></div>
+    <div class="relative z-10 space-y-10">
+      <h2 class="text-[clamp(3rem,8vw,6rem)] font-headline font-black uppercase chiseled-text tracking-tighter">
+        Ready to Begin?
+      </h2>
+      <p class="text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+        Your transformation isn't an option; it's an inevitability. Secure your consultation slot now.
+      </p>
+      <a href="#booking" class="neon-glow-btn inline-block bg-primary-container text-on-primary-container px-12 py-6 rounded-full font-headline font-extrabold text-xl uppercase tracking-tighter">
+        Book Free Consultation
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
      BOOKING
 ================================================================ -->
-<section id="booking" class="py-24 md:py-32 bg-s border-t border-ov/15">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+<section id="booking" class="py-24 pb-32 bg-surface-container-lowest">
+  <div class="max-w-[1440px] mx-auto px-8 md:px-12">
     <!-- Header -->
-    <header class="mb-16 relative">
-      <div class="absolute -top-16 -left-16 w-72 h-72 bg-pc/8 blur-[100px] rounded-full pointer-events-none" aria-hidden="true"></div>
-      <p class="text-xs font-bold uppercase tracking-[0.3em] text-pc mb-4 relative">Book a Call</p>
-      <h2 class="font-headline font-black text-[clamp(3rem,7vw,6rem)] chiseled-text leading-[0.9] tracking-tighter uppercase mb-5 relative">
+    <header class="mb-16 md:mb-24 relative">
+      <div class="absolute -top-12 -left-12 w-72 h-72 bg-primary-container/20 blur-[100px] rounded-full pointer-events-none" aria-hidden="true"></div>
+      <h2 class="font-headline text-[clamp(3rem,7vw,6rem)] font-black chiseled-text leading-none tracking-tighter uppercase mb-5 relative">
         Free 15-Minute<br/>Consultation
       </h2>
-      <p class="text-lg text-osv max-w-xl font-medium">
+      <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl font-medium tracking-wide">
         No pitch, no pressure — just an honest conversation about your goals and how to get there.
       </p>
     </header>
 
+    <!-- Booking grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
       <!-- Calendar -->
-      <div class="lg:col-span-7 bg-s-md rounded-2xl p-8 shadow-2xl">
-        <div class="flex items-center justify-between mb-6">
+      <section class="lg:col-span-7 bg-surface-container-low rounded-xl p-8 smoky-shadow relative overflow-hidden">
+        <div class="flex items-center justify-between mb-8">
           <div>
-            <h3 class="text-lg font-headline font-bold text-p">Select a Date</h3>
-            <p class="text-xs text-osv/50 mt-0.5">Stockholm Time (CET/CEST)</p>
+            <h3 class="text-xl font-headline font-bold text-primary tracking-tight">Select a Date</h3>
+            <p class="text-sm text-on-surface-variant opacity-70 mt-0.5">Stockholm Time (CET/CEST)</p>
           </div>
-          <div class="flex gap-2">
-            <button id="prevMonth" aria-label="Previous month" class="w-10 h-10 rounded-full bg-s-hi flex items-center justify-center text-os hover:bg-pc hover:text-on-pc transition-all">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <div class="flex gap-3">
+            <button id="prevMonth" aria-label="Previous month"
+              class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-all duration-300">
+              <span class="material-symbols-outlined text-xl">chevron_left</span>
             </button>
-            <button id="nextMonth" aria-label="Next month" class="w-10 h-10 rounded-full bg-s-hi flex items-center justify-center text-os hover:bg-pc hover:text-on-pc transition-all">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            <button id="nextMonth" aria-label="Next month"
+              class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-all duration-300">
+              <span class="material-symbols-outlined text-xl">chevron_right</span>
             </button>
           </div>
         </div>
 
-        <p id="monthLabel" class="font-headline font-black text-2xl text-os mb-5"></p>
+        <p id="monthLabel" class="font-headline font-black text-2xl text-on-surface mb-5"></p>
 
         <!-- Day headers -->
-        <div class="grid grid-cols-7 gap-1 text-center mb-1">
-          <div class="py-2 text-xs font-bold uppercase tracking-wider text-os/25">Mon</div>
-          <div class="py-2 text-xs font-bold uppercase tracking-wider text-os/25">Tue</div>
-          <div class="py-2 text-xs font-bold uppercase tracking-wider text-os/25">Wed</div>
-          <div class="py-2 text-xs font-bold uppercase tracking-wider text-os/25">Thu</div>
-          <div class="py-2 text-xs font-bold uppercase tracking-wider text-os/25">Fri</div>
-          <div class="py-2 text-xs font-bold uppercase tracking-wider text-os/25">Sat</div>
-          <div class="py-2 text-xs font-bold uppercase tracking-wider text-os/25">Sun</div>
+        <div class="grid grid-cols-7 gap-1 text-center mb-2">
+          <div class="py-2 text-xs font-bold uppercase tracking-wider text-on-surface/25">Mon</div>
+          <div class="py-2 text-xs font-bold uppercase tracking-wider text-on-surface/25">Tue</div>
+          <div class="py-2 text-xs font-bold uppercase tracking-wider text-on-surface/25">Wed</div>
+          <div class="py-2 text-xs font-bold uppercase tracking-wider text-on-surface/25">Thu</div>
+          <div class="py-2 text-xs font-bold uppercase tracking-wider text-on-surface/25">Fri</div>
+          <div class="py-2 text-xs font-bold uppercase tracking-wider text-on-surface/25">Sat</div>
+          <div class="py-2 text-xs font-bold uppercase tracking-wider text-on-surface/25">Sun</div>
         </div>
         <div id="calGrid" class="grid grid-cols-7 gap-1 text-center mb-1"></div>
 
         <!-- Time slots -->
-        <div class="mt-8 pt-8 border-t border-ov/15">
-          <p id="timeSlotLabel" class="text-sm font-headline font-bold text-os/40 mb-4">Select a date to see available times</p>
+        <div class="mt-10 pt-8 border-t border-outline-variant/10">
+          <h4 id="timeSlotLabel" class="text-sm font-headline font-bold text-on-surface/40 mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">schedule</span>
+            Select a date to see available times
+          </h4>
           <div id="timeSlots" class="flex flex-wrap gap-3"></div>
         </div>
-      </div>
+      </section>
 
-      <!-- Right: availability + form -->
+      <!-- Right: stats + form -->
       <div class="lg:col-span-5 flex flex-col gap-6">
-        <!-- Availability indicator -->
-        <div class="bg-gradient-to-br from-s-hi to-s-md rounded-2xl p-6 border border-ov/15">
-          <p class="text-xs font-bold uppercase tracking-widest text-p mb-1">Limited Availability</p>
-          <h3 class="font-headline font-black text-xl text-os mb-4">3 consultation spots remaining this month</h3>
-          <div class="flex justify-between text-xs font-bold uppercase mb-2">
-            <span class="text-os/40">Spots filled</span>
-            <span class="text-pc">85%</span>
+        <!-- Availability card -->
+        <div class="bg-gradient-to-br from-surface-container-high to-surface-container-low p-8 rounded-xl relative overflow-hidden smoky-shadow">
+          <div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none" aria-hidden="true">
+            <span class="material-symbols-outlined text-[80px]" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">fitness_center</span>
           </div>
-          <div class="h-2 w-full bg-s-max rounded-full overflow-hidden">
-            <div class="h-full bg-pc w-[85%] shadow-[0_0_10px_rgba(255,95,31,0.5)] transition-all duration-1000"></div>
+          <div class="relative z-10">
+            <p class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Limited Availability</p>
+            <h3 class="font-headline font-black text-xl text-on-surface mb-4">3 consultation spots remaining this month</h3>
+            <div class="flex justify-between text-xs font-bold uppercase mb-2">
+              <span class="text-on-surface/40">Spots filled</span>
+              <span class="text-primary-container">85%</span>
+            </div>
+            <div class="h-3 w-full bg-secondary-container rounded-full overflow-hidden">
+              <div class="h-full bg-primary-container w-[85%] shadow-[0_0_10px_#ff5f1f] transition-all duration-1000"></div>
+            </div>
           </div>
         </div>
 
         <!-- Form -->
-        <div class="glass-panel border border-ov/15 rounded-2xl p-8 shadow-2xl">
+        <div class="glass-panel border border-outline-variant/10 rounded-xl p-8 smoky-shadow">
           <div id="formWrapper">
             <form id="bookingForm" class="space-y-5" novalidate>
               <div class="space-y-1.5">
-                <label for="inp-name" class="block text-xs font-bold uppercase tracking-widest text-osv px-1">Full Name</label>
+                <label for="inp-name" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant px-1">Full Name</label>
                 <input id="inp-name" type="text" placeholder="Your full name" autocomplete="name" required
-                  class="w-full bg-bg/60 border border-ov/20 rounded-full px-6 py-4 text-os text-sm focus:outline-none focus:ring-2 focus:ring-pc transition-all placeholder:text-os/25"/>
+                  class="w-full bg-surface-container-lowest border-none rounded-full px-6 py-4 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary-container transition-all placeholder:text-on-surface/25"/>
               </div>
               <div class="space-y-1.5">
-                <label for="inp-email" class="block text-xs font-bold uppercase tracking-widest text-osv px-1">Email Address</label>
+                <label for="inp-email" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant px-1">Email Address</label>
                 <input id="inp-email" type="email" placeholder="your@email.com" autocomplete="email" required
-                  class="w-full bg-bg/60 border border-ov/20 rounded-full px-6 py-4 text-os text-sm focus:outline-none focus:ring-2 focus:ring-pc transition-all placeholder:text-os/25"/>
+                  class="w-full bg-surface-container-lowest border-none rounded-full px-6 py-4 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary-container transition-all placeholder:text-on-surface/25"/>
               </div>
               <div class="space-y-1.5">
-                <label for="inp-goal" class="block text-xs font-bold uppercase tracking-widest text-osv px-1">Primary Goal</label>
+                <label for="inp-goal" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant px-1">Primary Goal</label>
                 <select id="inp-goal" required
-                  class="w-full bg-bg/60 border border-ov/20 rounded-full px-6 py-4 text-os text-sm focus:outline-none focus:ring-2 focus:ring-pc appearance-none transition-all">
+                  class="w-full bg-surface-container-lowest border-none rounded-full px-6 py-4 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary-container appearance-none transition-all">
                   <option value="">Select your goal</option>
                   <option>Build muscle &amp; strength</option>
                   <option>Lose body fat</option>
@@ -491,25 +644,63 @@
                 </select>
               </div>
               <div class="space-y-1.5">
-                <label for="inp-message" class="block text-xs font-bold uppercase tracking-widest text-osv px-1">Tell me about yourself</label>
+                <label for="inp-message" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant px-1">Tell me about yourself</label>
                 <textarea id="inp-message" rows="3" placeholder="Where are you currently? What's holding you back?"
-                  class="w-full bg-bg/60 border border-ov/20 rounded-xl px-6 py-4 text-os text-sm focus:outline-none focus:ring-2 focus:ring-pc transition-all custom-scrollbar placeholder:text-os/25 resize-none"></textarea>
+                  class="w-full bg-surface-container-lowest border-none rounded-xl px-6 py-4 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary-container transition-all custom-scrollbar placeholder:text-on-surface/25 resize-none"></textarea>
               </div>
-              <p id="formError" class="hidden text-xs font-bold text-red-400 px-1"></p>
-              <button type="submit" class="w-full bg-pc text-on-pc font-headline font-black text-xs uppercase tracking-widest py-5 rounded-full neon-glow transition-all duration-300 hover:scale-[1.02] hover:bg-pc-h flex items-center justify-center gap-2 mt-2">
-                Book My Free Call
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <p id="formError" class="hidden text-xs font-bold text-error px-1"></p>
+              <button type="submit"
+                class="w-full bg-primary-container text-on-primary-container font-headline font-black text-sm uppercase tracking-widest py-5 rounded-full neon-glow-btn transition-all duration-300 flex items-center justify-center gap-2 mt-2">
+                Secure Your Spot
+                <span class="material-symbols-outlined text-lg">bolt</span>
               </button>
-              <p class="text-center text-xs text-os/25">No commitment. Sean confirms within 24 hours.</p>
+              <p class="text-center text-xs text-on-surface/25">No commitment. Sean confirms within 24 hours.</p>
             </form>
           </div>
-          <!-- Success -->
+          <!-- Success state -->
           <div id="successMsg" class="hidden text-center py-10">
-            <div class="w-16 h-16 rounded-full bg-pc/15 flex items-center justify-center mx-auto mb-6">
-              <svg class="w-8 h-8 text-pc" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="w-16 h-16 rounded-full bg-primary-container/15 flex items-center justify-center mx-auto mb-6">
+              <span class="material-symbols-outlined text-primary-container text-3xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
             </div>
-            <h3 class="font-headline font-black text-2xl text-os mb-3">You're booked in!</h3>
-            <p class="text-osv text-sm leading-relaxed max-w-xs mx-auto">Sean will send a confirmation email within 24 hours with the video call link. Talk soon.</p>
+            <h3 class="font-headline font-black text-2xl text-on-surface mb-3">You're booked in!</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed max-w-xs mx-auto">Sean will send a confirmation email within 24 hours with the video call link. Talk soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured quote / social proof -->
+    <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="relative rounded-xl overflow-hidden aspect-[4/3] smoky-shadow">
+        <img
+          class="w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO7P-GMU2V3x0sAn9D58WYfVQg2eQeyNm9d3kAdgUiL5o-m9Cqrv3zv5NzR_1j9ZGYhNhecjMBsYMEfZN13fOELRhdrLW0XMoZ03tk4E6_IhmlDy9eR1Q5zJLuMzYlCXTebXm2LbfW2gv2LXJa9l5qs0ryliFnDsKfrnMWfbEcglOeWzCoBrxSy2jIYtoxlnXnrh2U8JXheffdDC__iBvpyq2qDHHUo-2rBmC7U6r3p8R1ZUNaInMKID9NaqMD5tm3RnPskMc_40I"
+          alt="Athlete training with dramatic lighting"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+        <div class="absolute bottom-8 left-8">
+          <p class="text-4xl font-headline font-black italic chiseled-text uppercase leading-none">
+            NO EXCUSES.<br/>JUST RESULTS.
+          </p>
+        </div>
+      </div>
+      <div class="space-y-8">
+        <div class="flex items-center gap-4">
+          <div class="h-1 w-16 bg-primary-container flex-shrink-0"></div>
+          <span class="text-xs font-black uppercase tracking-[0.3em] text-primary-container">The Sean Nygren Method</span>
+        </div>
+        <blockquote class="text-3xl font-headline font-bold text-on-surface leading-tight italic">
+          "I don't just build muscle; I build unbreakable mindsets. Your 15-minute consultation is the first brick in that foundation."
+        </blockquote>
+        <div class="flex items-center gap-4">
+          <img
+            class="w-14 h-14 rounded-full object-cover grayscale"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDSD7TOpipM33Z0ay62DT5Q8yJZ1qMWveMO7X2PfvNlWBFZRtdnvZ_qZDKL0A736j3D9e5zO-3qQuiChRLxKxzf5g3GleFQJ8zgDO53NImQLeyXBju59bSspftUTsfLkrCUVxkqcpB8e_F8EUaSXnVX_I5nrs-_gRfXQTaSw03S0j3cr6GNtu4AYBKuDAzK1dEVP3-mQzsRlj9FKvhGXbJ9RCdyhodHM-rjrshJaNXaO27CdHIQGk_QRx3e8j-o15u0wS0eNIYomM"
+            alt="Sean Nygren"
+          />
+          <div>
+            <p class="font-bold text-on-surface">Sean Nygren</p>
+            <p class="text-xs text-on-surface-variant uppercase tracking-widest">Certified Performance Coach · Stockholm</p>
           </div>
         </div>
       </div>
@@ -520,36 +711,23 @@
 <!-- ================================================================
      FOOTER
 ================================================================ -->
-<footer class="bg-bg border-t border-ov/15 py-16">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
-    <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
-      <div>
-        <p class="font-headline font-black italic text-2xl text-os tracking-tighter mb-3">Sean <span class="text-pc">Nygren</span></p>
-        <p class="text-osv text-sm max-w-xs leading-relaxed">Science-based personal training in Stockholm. Online coaching worldwide.</p>
-      </div>
-      <div class="grid grid-cols-2 gap-12">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-os/25 mb-4">Training</p>
-          <div class="flex flex-col gap-3">
-            <a href="#services" class="text-sm text-osv hover:text-os transition-colors">In-Person PT</a>
-            <a href="#services" class="text-sm text-osv hover:text-os transition-colors">Online Coaching</a>
-            <a href="#services" class="text-sm text-osv hover:text-os transition-colors">Premium Package</a>
-          </div>
-        </div>
-        <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-os/25 mb-4">Connect</p>
-          <div class="flex flex-col gap-3">
-            <a href="#booking"  class="text-sm text-osv hover:text-os transition-colors">Book a Call</a>
-            <a href="mailto:sean@seannygrenpt.com" class="text-sm text-osv hover:text-os transition-colors">Email Sean</a>
-            <a href="https://instagram.com/seannygrenpt" target="_blank" rel="noopener noreferrer" class="text-sm text-osv hover:text-os transition-colors">Instagram</a>
-          </div>
-        </div>
-      </div>
+<footer class="w-full py-12 border-t border-on-background/10 bg-background">
+  <div class="flex flex-col md:flex-row justify-between items-center px-8 gap-6 max-w-[1920px] mx-auto">
+    <div class="text-lg font-bold text-on-background font-headline italic tracking-tight">Sean Nygren</div>
+    <div class="flex flex-wrap justify-center gap-8 font-body text-sm uppercase tracking-widest text-on-background/60">
+      <a href="#services" class="hover:text-primary transition-colors">Training</a>
+      <a href="#about"    class="hover:text-primary transition-colors">About</a>
+      <a href="#results"  class="hover:text-primary transition-colors">Results</a>
+      <a href="#booking"  class="hover:text-primary transition-colors">Book a Call</a>
+      <a href="mailto:sean@seannygrenpt.com" class="hover:text-primary transition-colors">Email</a>
+      <a href="https://instagram.com/seannygrenpt" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Instagram</a>
     </div>
-    <div class="border-t border-ov/15 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-xs text-os/25 uppercase tracking-widest">© 2026 Sean Nygren Personal Training. Stockholm.</p>
-      <a href="app.html" class="text-xs text-os/25 hover:text-os/50 transition-colors uppercase tracking-widest">Plan Builder →</a>
+    <div class="font-body text-xs uppercase tracking-widest text-on-background/40 text-center md:text-right">
+      © 2026 Sean Nygren Personal Training. Stockholm.
     </div>
+  </div>
+  <div class="text-center mt-6">
+    <a href="app.html" class="text-xs text-on-background/25 hover:text-on-background/50 transition-colors uppercase tracking-widest">Plan Builder →</a>
   </div>
 </footer>
 
@@ -559,15 +737,6 @@
 <script>
 (function () {
   'use strict';
-
-  // ---- Nav scroll ----
-  const navEl = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY > 60;
-    navEl.style.background = scrolled ? 'rgba(19,19,19,0.96)' : 'rgba(19,19,19,0)';
-    navEl.style.backdropFilter = scrolled ? 'blur(20px)' : '';
-    navEl.style.borderBottom = scrolled ? '1px solid rgba(91,65,56,0.2)' : '';
-  }, { passive: true });
 
   // ---- Mobile nav ----
   const burger = document.getElementById('burger');
@@ -621,13 +790,13 @@
       const base = 'p-1 w-full aspect-square rounded-full flex items-center justify-center text-xs font-bold transition-colors';
 
       if (isPast || isSun) {
-        html += `<div class="${base} text-os/20 ${isSun ? 'line-through' : ''}">${d}</div>`;
+        html += `<div class="${base} text-on-surface/20 ${isSun ? 'line-through' : ''}">${d}</div>`;
       } else if (isSel) {
-        html += `<button onclick="window._selectDate(${d})" class="${base} bg-pc text-on-pc shadow-[0_0_16px_rgba(255,95,31,0.4)]" aria-pressed="true">${d}</button>`;
+        html += `<button onclick="window._selectDate(${d})" class="${base} bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(255,95,31,0.4)]" aria-pressed="true">${d}</button>`;
       } else if (isToday) {
-        html += `<button onclick="window._selectDate(${d})" class="${base} ring-2 ring-pc text-os" aria-label="Today, ${d}">${d}</button>`;
+        html += `<button onclick="window._selectDate(${d})" class="${base} ring-2 ring-primary-container text-on-surface" aria-label="Today, ${d}">${d}</button>`;
       } else {
-        html += `<button onclick="window._selectDate(${d})" class="${base} text-os hover:bg-s-hi">${d}</button>`;
+        html += `<button onclick="window._selectDate(${d})" class="${base} text-on-surface hover:bg-surface-container-high">${d}</button>`;
       }
     }
 
@@ -646,23 +815,23 @@
     const slots = document.getElementById('timeSlots');
 
     if (!selDate) {
-      lbl.textContent = 'Select a date to see available times';
-      lbl.className = 'text-sm font-headline font-bold text-os/40 mb-4';
+      lbl.innerHTML = '<span class="material-symbols-outlined text-base">schedule</span> Select a date to see available times';
+      lbl.className = 'text-sm font-headline font-bold text-on-surface/40 mb-4 flex items-center gap-2';
       slots.innerHTML = '';
       return;
     }
 
     const ds = selDate.toLocaleDateString('en-SE', { weekday: 'long', month: 'long', day: 'numeric' });
-    lbl.textContent = `Available times — ${ds}`;
-    lbl.className = 'text-sm font-headline font-bold text-os mb-4';
+    lbl.innerHTML = `<span class="material-symbols-outlined text-base text-primary-container">schedule</span> Available times — ${ds}`;
+    lbl.className = 'text-sm font-headline font-bold text-on-surface mb-4 flex items-center gap-2';
 
     slots.innerHTML = TIMES.map(t => {
       const active = t === selTime;
       return `<button onclick="window._selectTime('${t}')"
-        class="px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+        class="px-6 py-3 rounded-full text-sm font-bold transition-all ${
           active
-            ? 'bg-pc text-on-pc shadow-[0_0_14px_rgba(255,95,31,0.4)]'
-            : 'border border-ov/25 text-os hover:border-pc'
+            ? 'bg-primary-container text-on-primary-container shadow-[0_0_14px_rgba(255,95,31,0.4)]'
+            : 'bg-surface-container-high text-on-surface hover:bg-surface-container-highest'
         }">${t}</button>`;
     }).join('');
   }
